@@ -1,7 +1,7 @@
 final: out/main.o out/menu.o out/invetory_system.o
 	gcc out/main.o out/menu.o out/invetory_system.o -o final
 
-out/main.o: src/main.c
+out/main.o: src/main.c src/menu.h src/invetory_system.h
 	gcc -c src/main.c -o out/main.o
 
 out/menu.o: src/menu.c
