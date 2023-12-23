@@ -67,7 +67,17 @@ void menu_init()
                 menu_add_item();
                 break;
             case REMOVE_ITEM:
-                printf("Remove item\n");
+                clear();
+                char name[20];
+                printf("Name: ");
+                scanf("%19s", name);
+                printf("Quantity: ");
+                int quantity;
+                scanf("%d", &quantity);
+                struct item* items_list = read_items(&count);
+                remove_item(name, quantity, items_list, &count);
+                getchar();
+                getchar();
                 break;
             case LIST_ITEMS:
                 clear();

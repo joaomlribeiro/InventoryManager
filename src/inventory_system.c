@@ -18,6 +18,38 @@ void save_item (struct item item)
     fclose(fp);
 }
 
+void clear_inventory()
+{
+    FILE *fp;
+    fp = fopen("inventory.txt", "w");
+    fclose(fp);
+}
+
+void remove_item(char *name, int quantity, struct item* items_list, int *count) 
+{
+    for(int i = 0; i < *count; i++) {
+        if (strcmp(items_list[i].name, name) == 0) {
+            if (items_list[i].quantity > quantity) {
+                items_list[i].quantity -= quantity;
+            } else if (items_list[i].quantity == quantity) {
+                for (int j = i; j < *count - 1; j++) {
+                    items_list[j] = items_list[j + 1];
+                }
+                *count -= 1;
+            } else {
+                printf("Not enough items.\n");
+                return;
+            }
+            clear_inventory();
+            for (int i = 0; i < *count; i++) {
+                save_item(items_list[i]);
+            }
+            return;
+        }
+    }
+    printf("Item not found.\n");
+}
+
 struct item* read_items(int *count)
 {
     FILE *fp;
