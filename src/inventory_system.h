@@ -16,5 +16,6 @@ struct item {
 
 void inventory_system_init();
 void save_item (struct item item);
+struct item* read_items(int* itemCount);
 
 #endif // INVENTORY_SYSTEM_H

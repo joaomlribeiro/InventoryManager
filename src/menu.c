@@ -43,6 +43,14 @@ void menu_add_item()
 
 }
 
+void menu_list_items(struct item *list, int count) {
+    printf("%-15s %-10s %-10s %-10s\n", "Name", "Quantity", "Price", "Weight");
+    for (int i = 0; i < count; i++) {
+        printf("%-15s %-10d %-10.2f %-10d\n", list[i].name, list[i].quantity, list[i].price, list[i].measure.weight);
+    }
+    printf("\n");
+}
+
 void menu_init()
 {
     int choice = 0;
@@ -50,18 +58,26 @@ void menu_init()
         clear();
         menu_info();
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        scanf(" %d", &choice);~
+        getchar();
+        int count = 0;
         switch (choice) {
             case ADD_ITEM:
+                clear();
                 menu_add_item();
                 break;
             case REMOVE_ITEM:
                 printf("Remove item\n");
                 break;
             case LIST_ITEMS:
-                printf("List items\n");
+                clear();
+                struct item* list = read_items(&count);
+                menu_list_items(list, count);
+                free(list);
+                getchar();
                 break;
             case EXIT:
+                clear();
                 printf("Exit\n");
                 break;
             default:
