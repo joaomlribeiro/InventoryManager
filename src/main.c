@@ -1,4 +1,4 @@
-#include "invetory_system.h"
+#include "inventory_system.h"
 #include "menu.h"
 
 int main() {
