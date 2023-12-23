@@ -14,7 +14,7 @@ void save_item (struct item item)
 {
     FILE *fp;
     fp = fopen("inventory.txt", "a");
-    fprintf(fp, "%s;%d;%f;%d\n", item.name, item.quantity, item.price, item.measure.weight);
+    fprintf(fp, "%s;%d;%.2f;%d\n", item.name, item.quantity, item.price, item.measure.weight);
     fclose(fp);
 }
 

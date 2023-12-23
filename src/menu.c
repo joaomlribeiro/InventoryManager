@@ -58,7 +58,7 @@ void menu_init()
         clear();
         menu_info();
         printf("Enter your choice: ");
-        scanf(" %d", &choice);~
+        scanf(" %d", &choice);
         getchar();
         int count = 0;
         switch (choice) {
